@@ -19,6 +19,8 @@ const int rodata =42;
 
 auto main(int argc, char **argv) -> int
 {
+    int stack;
+    int stack2 = 42;
    
     /**
      * The {fmt} lib is a cross platform library for printing and formatting text
@@ -36,6 +38,14 @@ auto main(int argc, char **argv) -> int
     fmt::print("Value of variable rodata {} address of variable rodata {}\n",
     rodata,
     fmt::ptr(&rodata));
+
+    fmt::print("Value of variable stack {} address of variable stack {}\n",
+    stack,
+    fmt::ptr(&stack));
+
+    fmt::print("Value of variable stack2 {} address of variable stack2 {}\n",
+    stack2,
+    fmt::ptr(&stack2));
 
 
     return 0; /* exit gracefully*/
