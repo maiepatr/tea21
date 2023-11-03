@@ -29,11 +29,11 @@ auto main(int argc, char **argv) -> int
     bss,
     fmt::ptr(&bss));
 
-    fmt::print("Value of variable foo {} address of variable foo {}\n",
+    fmt::print("Value of variable data {} address of variable data {}\n",
     data,
     fmt::ptr(&data));
 
-    fmt::print("Value of variable foo {} address of variable foo {}\n",
+    fmt::print("Value of variable rodata {} address of variable rodata {}\n",
     rodata,
     fmt::ptr(&rodata));
 
