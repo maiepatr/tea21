@@ -39,8 +39,11 @@ auto main(int argc, char **argv) -> int
         i = distrib(gen);
     }
 
-
     fmt::print("The vector \n[{}]\n", fmt::join(data, ", "));
+
+
+    std::sort(data.begin(), data.end());
+    fmt::print("The sorted vector \n[{}]\n", fmt::join(data, ", "));
 
     /**
      * The {fmt} lib is a cross platform library for printing and formatting text
