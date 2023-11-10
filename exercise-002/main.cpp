@@ -35,15 +35,12 @@ auto main(int argc, char **argv) -> int
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> distrib(1, 100);
 
-    for (auto& 1 : data) {
-        1 = distrib(gen);
+    for (auto& i : data) {
+        i = distrib(gen);
     }
 
-    for (int i=0; i<= data, size(); i++) {
-        data(i) = distrib(gen);
-    }
 
-    fmt::print("The vector \n{}\n", fmt::join(data, ", "));
+    fmt::print("The vector \n[{}]\n", fmt::join(data, ", "));
 
     /**
      * The {fmt} lib is a cross platform library for printing and formatting text
