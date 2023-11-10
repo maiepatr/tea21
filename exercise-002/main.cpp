@@ -25,6 +25,9 @@ auto main(int argc, char **argv) -> int
         return app.exit(e);
     }
 
+    std::vector<int> data(count);
+    fmt::print("Created a vector with {} elements \n", count);
+
     /**
      * The {fmt} lib is a cross platform library for printing and formatting text
      * it is much more convenient than std::cout and printf
