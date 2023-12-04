@@ -1,34 +1,85 @@
 #include <fmt/chrono.h>
 #include <fmt/format.h>
 
+
 #include "CLI/CLI.hpp"
 #include "config.h"
 
-auto main(int argc, char **argv) -> int
-{
-    /**
-     * CLI11 is a command line parser to add command line options
-     * More info at https://github.com/CLIUtils/CLI11#usage
-     */
-    CLI::App app{PROJECT_NAME};
-    try
-    {
-        app.set_version_flag("-V,--version", fmt::format("{} {}", PROJECT_VER, PROJECT_BUILD_DATE));
-        app.parse(argc, argv);
-    }
-    catch (const CLI::ParseError &e)
-    {
-        return app.exit(e);
-    }
 
-    /**
-     * The {fmt} lib is a cross platform library for printing and formatting text
-     * it is much more convenient than std::cout and printf
-     * More info at https://fmt.dev/latest/api.html
-     */
-    fmt::print("Hello, {}!\n", app.get_name());
 
     /* INSERT YOUR CODE HERE */
 
-    return 0; /* exit gracefully*/
+    
+
+    extern void sleep_ms(int milliseconds);
+
+    extern int getInput(void); typedef enum { 
+        DB_STATE_OFF = 0,
+        DB_STATE_S1 = 1, 
+        DB_STATE_S2 = 2, 
+        DB_STATE_ON = 3, 
+        DB_STATE_MAX
+    } DebounceState_t; 
+
+    DebounceState_t state = DB_STATE_OFF;
+
+    void stateMachine() 
+    {
+        switch(state) 
+        {
+            case DB_STATE_OFF: 
+                if(1 == getInput()) 
+                {
+                    state = DB_STATE_S1; 
+                }
+            break; 
+            case DB_STATE_S1: 
+                if(1 == getInput()) 
+                {
+                state = DB_STATE_S2;
+                }
+                else 
+                {
+                    state = DB_STATE_OFF; 
+                }
+            break; 
+            case DB_STATE_S2: 
+                if(1 == getInput()) 
+                {
+                    state = DB_STATE_ON; 
+                }
+                else
+                {
+                    state = DB_STATE_OFF;
+                }
+            break;
+            case DB_STATE_ON: 
+                if(1 == getInput()) 
+                {
+                    state = DB_STATE_ON; 
+                }
+                else
+                {
+                    state = DB_STATE_OFF; 
+                }
+            
+            default: 
+                state = DB_STATE_OFF;
+            break; 
+            
+        } 
+    }
+    int main(void) {
+
+
+
+
+
+
+    while( 1==1 ) {
+    stateMachine(); 
+    sleep_ms(100);
+    }
 }
+
+
